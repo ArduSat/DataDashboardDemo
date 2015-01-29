@@ -1,0 +1,55 @@
+@include font-face(DIN, 'fonts/DIN/DINWeb-Light', normal);
+@include font-face(DIN, 'fonts/DIN/DINWeb-Medium', 500);
+@include font-face(DIN, 'fonts/DIN/DINWeb-Bold', bold);
+
+body, h1, h2, h3, h4, h5, h6 {
+  font-family: "DIN", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+h1, h2, h3, h4 {
+  font-weight: normal;
+}
+
+h5, h6 {
+  font-weight: 500;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin-top: 0.71em;
+  /*padding-bottom: 0.57em; */
+  /* border-bottom: 1px solid #cdd3dc; */
+}
+
+em, strong {
+  font-style: normal;
+  font-weight: 500;
+}
+
+.well {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+// Define classes for icons
+@include font-face(icomoon, 'fonts/icons/icomoon', normal);
+@import 'icomoon';
+
+.form-control::-webkit-input-placeholder {
+  color: $gray !important;
+}
+.form-control::-moz-placeholder {
+  color: $gray !important;
+}
+.form-control:-moz-placeholder {   /* Older versions of Firefox */
+  color: $gray !important;
+}
+.form-control:-ms-input-placeholder { 
+  color: $gray !important;
+}
+.form-control::input-placeholder { 
+  color: $gray !important;
+}

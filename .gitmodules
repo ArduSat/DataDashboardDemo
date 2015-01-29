@@ -1,0 +1,3 @@
+[submodule "space-kit-examples"]
+	path = space-kit-examples
+	url = git://github.com/ArduSat/space-kit-examples.git
