@@ -14,15 +14,15 @@ module.exports = function(grunt) {
           compass: false
         },
         files: {
-          '<%= project.app %>/app.css':'<%= project.css %>',
-          '<%= project.app %>/sensor-data/sensor-data.css':'<%= project.app %>/sensor-data/sensor-data.scss',
+          '<%= project.app %>/css/app.css':'<%= project.css %>',
+          '<%= project.app %>/css/sensor-data/sensor-data.css':'<%= project.app %>/sensor-data/sensor-data.scss'
         }
       }
     },
     watch: {
       sass: {
         files: ['<%= project.app %>/sass/{,*/}*.{scss,sass}',
-                '<%= project.app %>/sensor-data/{,/}*.{scss,sass}',
+                '<%= project.app %>/sensor-data/{,/}*.{scss,sass}'
         ],
         tasks: ['sass:dev']
       }

@@ -1,0 +1,152 @@
+<!--
+<nav class="navbar-default navbar-static-side sidebar-menu fixed" role="navigation">
+    <div class="sidebar-collapse">
+        <ul side-navigation class="nav" >
+
+           &lt;!&ndash; <li ng-class="{active: $state.includes('dashboards')}">
+                <a href="index.html"><i class="fa fa-th-large"></i> <span class="nav-label">Dashboards</span> <span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level" ng-class="{in: $state.includes('dashboards')}">
+                    <li ui-sref-active="active"><a ui-sref="dashboards.dashboard_1">Dashboard v.1</a></li>
+                    <li ui-sref-active="active"><a ui-sref="dashboards.dashboard_2">Dashboard v.2</a></li>
+                    <li ui-sref-active="active"><a ui-sref="dashboards.dashboard_3">Dashboard v.3</a></li>
+                </ul>
+            </li>
+
+            <li ng-class="{active: $state.includes('charts')}">
+                <a href=""><i class="fa fa-bar-chart-o"></i> <span class="nav-label">Graphs</span><span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level" ng-class="{in: $state.includes('charts')}">
+                    <li ng-repeat="sensor in sensorData" ui-sref-active="active"><a ng-click="dashboardOptions.addWidget(sensor.sensorName)" href>{{sensor.sensorName}}</a></li>
+                </ul>
+            </li>
+            <li ui-sref-active="active">
+                <a ui-sref="css_animations"><i class="fa fa-magic"></i> <span class="nav-label">CSS Animations </span><span class="label label-info pull-right">62</span></a>
+            </li>&ndash;&gt;
+
+
+
+
+
+           &lt;!&ndash; <li class="landing_link">
+                <a target="_blank" href="../../Landing_page/index.html"><i class="fa fa-star"></i> <span class="nav-label">Landing Page</span> <span class="label label-warning pull-right">NEW</span></a>
+            </li>
+            <li class="special_link">
+                <a href="../index.html"><i class="fa fa-html5"></i> <span class="nav-label">HTML/CSS Version</span></a>
+            </li>&ndash;&gt;
+        </ul>
+
+    </div>
+</nav>
+-->
+
+<aside class="sidebar-menu fixed">
+    <div class="sidebar-inner scrollable-sidebar">
+        <div class="main-menu">
+            <ul class="accordion">
+                <li class="menu-header">
+                    Main Menu
+                </li>
+                <li class="nav-header">
+                    <div class="dropdown profile-element">
+                        <img alt="image" class="img-circle" src="/images/logo-full.svg" style="width:150px; height:63px;"/>
+                    </div>
+                    <div class="logo-element">
+                        <img src="/images/logo-small.png">
+                    </div>
+                </li>
+
+                <li class="openable bg-palette1">
+                    <a href="#" id="mainmen">
+                        <span class="menu-content block">
+                            <span class="menu-icon"><i class="block fa fa-bar-chart-o fa-lg"></i></span>
+                            <span class="text m-left-sm nav-link">Sensors</span>
+                            <span class="submenu-icon"></span>
+                        </span>
+                        <span class="menu-content-hover block">
+                            Sensors
+                        </span>
+                    </a>
+                    <ul class="submenu bg-palette1">
+                        <li ng-repeat="sensor in sensors"><a href="#" ng-click="addChart(sensor.name,sensor);"><span class="submenu-label">{{sensor.name}}</span></a></li>
+                    </ul>
+                </li>
+
+                <li class="openable bg-palette2">
+                    <a href="#">
+									<span class="menu-content block">
+										<span class="menu-icon"><i class="block fa fa-tags fa-lg"></i></span>
+										<span class="text m-left-sm nav-link">Dashboards</span>
+										<span class="submenu-icon"></span>
+									</span>
+									<span class="menu-content-hover block">
+										Dash
+									</span>
+                    </a>
+                    <ul class="submenu">
+                        <li><a href="#"><span class="submenu-label" ng-click="savedDash()">Saved Dashboard 1</span></a></li>
+                        <li><a href="#"><span class="submenu-label" ng-click="savedDash()">Sample Dashboard 2</span></a></li>
+                        <li><a href="#"><span class="submenu-label" ng-click="savedDash()">Awesome Dashboard 3</span></a></li>
+                        <li><a href="#"><span class="submenu-label" ng-click="savedDash()">Gyro Dashboard 4</span></a></li>
+                    </ul>
+                </li>
+
+                <li class="openable bg-palette3">
+                    <a href="#">
+									<span class="menu-content block">
+										<span class="menu-icon"><i class="block fa fa-info fa-lg"></i></span>
+										<span class="text m-left-sm nav-link">Info</span>
+										<span class="submenu-icon"></span>
+									</span>
+									<span class="menu-content-hover block">
+										Info
+									</span>
+                    </a>
+                    <ul class="submenu">
+                        <li><a href="#"><span class="submenu-label">Sensor Basics</span></a></li>
+                        <li><a href="#"><span class="submenu-label">Measurement Units</span></a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div class="sidebar-fix-bottom clearfix">
+            <a href="lockscreen.html" class="pull-right font-18"><i class="ion-log-out"></i></a>
+        </div>
+    </div><!-- sidebar-inner -->
+</aside>
+<script>
+    $('.sidebar-menu .openable > a').click(function(){
+        if(!$('aside').hasClass('sidebar-mini') || Modernizr.mq('(max-width: 991px)'))	{
+            if( $(this).parent().children('.submenu').is(':hidden') ) {
+                $(this).parent().siblings().removeClass('open').children('.submenu').slideUp(200);
+                $(this).parent().addClass('open').children('.submenu').slideDown(200);
+            }
+            else	{
+                $(this).parent().removeClass('open').children('.submenu').slideUp(200);
+            }
+        }
+        return false;
+    });
+
+    //Open active menu
+    if(!$('.sidebar-menu').hasClass('sidebar-mini') || Modernizr.mq('(max-width: 767px)'))	{
+        $('.openable.open').children('.submenu').slideDown(200);
+    }
+
+    //Toggle User container on sidebar menu
+    $('#btn-collapse').click(function()	{
+        $('.sidebar-header').toggleClass('active');
+    });
+
+    //theme setting
+    $("#theme-setting-icon").click(function()	{
+        if($('#theme-setting').hasClass('open'))	{
+            $('#theme-setting').removeClass('open');
+            $('#theme-setting-icon').removeClass('open');
+        }
+        else	{
+            $('#theme-setting').addClass('open');
+            $('#theme-setting-icon').addClass('open');
+        }
+
+        return false;
+    });
+</script>

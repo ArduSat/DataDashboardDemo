@@ -1,6 +1,6 @@
-@include font-face(DIN, 'fonts/DIN/DINWeb-Light', normal);
-@include font-face(DIN, 'fonts/DIN/DINWeb-Medium', 500);
-@include font-face(DIN, 'fonts/DIN/DINWeb-Bold', bold);
+@include font-face(DIN, '../fonts/DIN/DINWeb-Light', normal);
+@include font-face(DIN, '../fonts/DIN/DINWeb-Medium', 500);
+@include font-face(DIN, '../fonts/DIN/DINWeb-Bold', bold);
 
 body, h1, h2, h3, h4, h5, h6 {
   font-family: "DIN", "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -35,7 +35,7 @@ a:hover {
 }
 
 // Define classes for icons
-@include font-face(icomoon, 'fonts/icons/icomoon', normal);
+@include font-face(icomoon, '../fonts/icons/icomoon', normal);
 @import 'icomoon';
 
 .form-control::-webkit-input-placeholder {

@@ -1,6 +1,33 @@
 /* app css stylesheet */
-
 @import 'app/bower_components/bourbon/app/assets/stylesheets/bourbon';
 @import 'ardutheme';
 @import 'app/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap';
-@import 'typography';
+
+// Variables, Mixins
+@import "variables";
+@import "mixins";
+
+
+@import "typography";
+@import "leftnavbar";
+@import "buttons";
+@import "badgets_labels";
+@import "elements";
+@import "sidebar";
+@import "dash";
+@import "pages";
+
+// For demo only - config box style
+@import "theme-config";
+
+// INSPINIA Skins
+@import "skins";
+
+// Media query style
+@import "media";
+
+// Custom style
+// Your custom style to override base style
+@import "custom";
+
+

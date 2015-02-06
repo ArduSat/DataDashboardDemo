@@ -1,37 +1,106 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9"> <![endif]-->
+<!--[if lt IE 7]>      <html lang="en" ng-app="ardusatData" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html lang="en" ng-app="ardusatData" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html lang="en" ng-app="ardusatData" class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html lang="en" ng-app="ardusatData" class="no-js"> <!--<![endif]-->
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Ardusat Sensors</title>
+    <title>Ardusat Sensors</title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
   <link rel="stylesheet" href="bower_components/html5-boilerplate/css/normalize.css">
   <link rel="stylesheet" href="bower_components/html5-boilerplate/css/main.css">
-  <link rel="stylesheet" href="sensor-data/sensor-data.css"/>
-  <link rel="stylesheet" href="app.css"/>
+  <link rel="stylesheet" href="bower_components/animate.css/animate.min.css"/>
+  <link rel="stylesheet" href="bower_components/metisMenu/dist/metisMenu.min.css"/>
+  <link href="bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  <link href="bower_components/switchery/dist/switchery.min.css" rel="stylesheet">
+  <link href="bower_components/angular-notify/dist/angular-notify.min.css" rel="stylesheet">
+  <link href="bower_components/malhar-angular-dashboard/dist/angular-ui-dashboard.css" rel="stylesheet">
+  <link rel="stylesheet" href="bower_components/nvd3/nv.d3.min.css">
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="bower_components/angular-notify/dist/angular-notify.min.css">
+  <link rel="stylesheet" href="css/app.css"/>
+
   <script src="bower_components/html5-boilerplate/js/vendor/modernizr-2.6.2.min.js"></script>
 </head>
-<body>
+<body ng-cloak>
   <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
   <![endif]-->
 
-  <div class="container-fluid" id="main" ng-view>
+  <!-- Wrapper-->
+  <div id="wrapper" ng-controller="dashmainCtrl">
+
+      <!-- Navigation -->
+      <div ng-include="'views/common/navigation.html'"></div>
+
+      <!-- Page wraper -->
+      <!-- ng-class with current state name give you the ability to extended customization your view -->
+      <div id="page-wrapper" class="gray-bg {{$state.current.name}}">
+
+          <!-- Page wrapper -->
+          <div ng-include="'views/common/topnavbar.html'"></div>
+
+          <!-- Main view  -->
+          <div ui-view></div>
+
+          <!-- Footer -->
+          <div ng-include="'views/common/footer.html'"></div>
+
+      </div>
+      <!-- End page wrapper-->
+
   </div>
+  <!-- End wrapper-->
 
   <!-- In production use:
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
   -->
-  <script src="bower_components/angular/angular.js"></script>
+
+  <script src="bower_components/jquery/jquery.min.js"></script>
+  <script src="bower_components/jquery-ui/jquery-ui.min.js"></script>
+  <script src="bower_components/underscore/underscore-min.js"></script>
+  <script src="bower_components/angular/angular.min.js"></script>
+
+  <script src="bower_components/jquery.slimscroll/jquery.slimscroll.min.js"></script>
+  <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
   <script src="bower_components/angular-route/angular-route.js"></script>
-  <script src="bower_components/jquery/dist/jquery.min.js"></script>
   <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
-  <script src="d3/d3.js"></script>
+  <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+  <script src="bower_components/metisMenu/dist/metisMenu.js"></script>
+
+  <script src="bower_components/angular-ui-sortable/sortable.min.js"></script>
+  <script src="bower_components/d3/d3.min.js"></script>
+  <script src="bower_components/nvd3/nv.d3.js"></script>
+  <script src="bower_components/angularjs-nvd3-directives/dist/angularjs-nvd3-directives.min.js"></script>
+  <script src="bower_components/angular-nvd3/dist/angular-nvd3.min.js"></script>
   <script src="sensor-data/sensor-data.js"></script>
-  <script src="app.js"></script>
+  <script src="bower_components/switchery/dist/switchery.min.js"></script>
+  <script src="bower_components/angular-notify/dist/angular-notify.min.js"></script>
+  <script src="bower_components/angular-local-storage/dist/angular-local-storage.min.js"></script>
+  <script src="bower_components/angular-notify/dist/angular-notify.min.js"></script>
+  <script src="bower_components/malhar-angular-dashboard/dist/angular-ui-dashboard.js"></script>
+  <script src="d3/d3.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/services/ardusatData.js"></script>
+  <script src="js/services/chartObjects.js"></script>
+  <script src="js/services/stateWatcher.js"></script>
+  <script src="js/directives/dashDirectives.js"></script>
+
+  <script src="js/services/chartHelper.js"></script>
+  <script src="js/directives/charting/accelerometers.js"></script>
+  <script src="js/directives/charting/magnetometers.js"></script>
+  <script src="js/directives/charting/gyros.js"></script>
+  <script src="js/directives/charting/ambientTemp.js"></script>
+  <script src="js/directives/charting/infraredTemp.js"></script>
+  <script src="js/directives/charting/luminosity.js"></script>
+  <script src="js/directives/charting/uvlight.js"></script>
+  <script src="js/controllers/controllers.js"></script>
+  <script src="js/controllers/dashmainCtrl.js"></script>
+
+  <script src="js/custom.js"></script>
 </body>
 </html>
