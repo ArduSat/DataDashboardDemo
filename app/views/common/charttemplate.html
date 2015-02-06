@@ -1,0 +1,38 @@
+<div>
+    <div class="btn-toolbar" ng-if="!options.hideToolbar">
+
+        <div class="btn-group" ng-if="options.widgetButtons">
+            <button ng-repeat="widget in widgetDefs"
+                    ng-click="addWidgetInternal($event, widget);" type="button" class="btn btn-primary">
+                {{widget.name}}
+            </button>
+        </div>
+        <button ng-if="options.storage && options.explicitSave" ng-click="options.saveDashboard()" class="btn btn-success" ng-disabled="!options.unsavedChangeCount">{{ !options.unsavedChangeCount ? "all saved" : "save changes (" + options.unsavedChangeCount + ")" }}</button>
+
+        <button ng-click="clear();removeChart('all');" type="button" class="btn btn-danger" ng-show="activeCharts">Clear Chart Area </button>
+    </div>
+
+    <div ui-sortable="sortableOptions" ng-model="widgets" class="dashboard-widget-area">
+        <div ng-repeat="widget in widgets" ng-style="widget.containerStyle" class="widget-container animated bounceInRight" widget>
+            <div class="widget ibox float-e-margins">
+
+                <div class="widget-header ibox-title {{widget.name}}" >
+                    <h5 class="dash-wtitle">
+                        <div>
+                            <div class="alignright">
+                                <span ng-click="removeWidget(widget);removeChart(widget.name)" class="glyphicon glyphicon-remove" ng-if="!options.hideWidgetClose"></span>
+                                <span ng-click="openWidgetSettings(widget);" class="glyphicon glyphicon-cog" ng-if="!options.hideWidgetSettings"></span>
+                            </div>
+                            <span class="widget-title" ng-dblclick="editTitle(widget)" ng-hide="widget.editingTitle">{{widget.title}}</span>
+                             <span class="widget-val">Current Value: {{sensors[$index].latestVal}}</span>
+                        </div>
+
+                    </h5>
+                </div>
+                <div class="widget-content ibox-content " ng-style="widget.contentStyle"></div>
+                <div class="widget-ew-resizer" ng-mousedown="grabResizer($event)"></div>
+                <div ng-if="widget.enableVerticalResize" class="widget-s-resizer" ng-mousedown="grabSouthResizer($event)"></div>
+            </div>
+        </div>
+    </div>
+</div>
